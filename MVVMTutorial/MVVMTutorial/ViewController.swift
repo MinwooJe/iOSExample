@@ -12,20 +12,12 @@ class ViewController: UIViewController {
     @IBOutlet var datetimeLabel: UILabel!
     
     @IBAction func onYesterday() {
-        guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: currentDateTime) else { return }
-        
-        currentDateTime = yesterday
-        updateDateTime()
     }
     
     @IBAction func onNow() {
-//        fetchNow()
     }
     
     @IBAction func onTomorrow() {
-        guard let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: currentDateTime) else { return }
-        currentDateTime = tomorrow
-        updateDateTime()
     }
     
     // MARK: - Controller
@@ -34,7 +26,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    var currentDateTime = Date()
+//    var currentDateTime = Date()
     
 //    private func fetchNow() {
 //        let url = "https://worldtimeapi.org/api/Asia/Seoul"
@@ -61,7 +53,7 @@ class ViewController: UIViewController {
     private func updateDateTime() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일 HH시 mm분"
-        datetimeLabel.text = formatter.string(from: currentDateTime)
+//        datetimeLabel.text = formatter.string(from: currentDateTime)
     }
 
     // MARK: - Model
