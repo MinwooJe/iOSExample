@@ -11,12 +11,15 @@ class ViewController: UIViewController {
     @IBOutlet var datetimeLabel: UILabel!
     
     @IBAction func onYesterday() {
+        viewModel.changeDate(day: -1)
     }
     
     @IBAction func onNow() {
+        viewModel.reloadData()
     }
     
     @IBAction func onTomorrow() {
+        viewModel.changeDate(day: 1)
     }
     
     let viewModel = ViewModel()
@@ -25,7 +28,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel.onUpdated = { [weak self] in
-            self?.datetimeLabel?.text = self?.viewModel.dateTimeString
+            DispatchQueue.main.async {
+                self?.datetimeLabel?.text = self?.viewModel.dateTimeString
+            }
         }
         viewModel.reloadData()
     }

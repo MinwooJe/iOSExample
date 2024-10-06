@@ -11,7 +11,7 @@ class Repository {
     func fetchNow(onCompleted: @escaping (UTCTimeModel) -> Void) {
         let url = "https://worldtimeapi.org/api/Asia/Seoul"
         
-        URLSession.shared.dataTask(with: URL(string: url)!) { [weak self] data, _, _ in
+        URLSession.shared.dataTask(with: URL(string: url)!) { data, _, _ in
             guard let data = data else { return }
             guard let model = try? JSONDecoder().decode(UTCTimeModel.self, from: data) else { return }
             
